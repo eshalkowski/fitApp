@@ -1,0 +1,52 @@
+
+  <div class="row text-center">
+    <h1><small>Welcome to</small> Fit App</h1>
+    <p class="lead">
+    </p>
+  </div>
+
+  <div class="row" ng-hide="showRegistration">
+    <div class="well col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+      <form name="loginForm"  ng-submit="submitLogin(loginForm.$valid)" novalidate>
+        <div class="form-group" >
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="login.email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" placeholder="Password" ng-model="login.password"required>
+        </div>
+        <button type="submit" class="btn btn-success" ng-click="login()" ng-disabled="loginForm.$invalid">Login</button>
+        <small></br><a class="pull-right" ng-click="toggleRegistration($event)">Register Now</a></small>
+      </form>
+    </div>
+  </div>
+    <div class="row" ng-show="showRegistration">
+    <div class="well col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+      <form name="registrationForm"  ng-submit="submitRegistration(registrationForm.$valid)" novalidate>
+        <div class="form-group"  >
+          <label for="newEmail">Email address</label>
+          <input type="email" class="form-control" name="newEmail" placeholder="Enter email" ng-model="register.email" required>
+        </div>
+        <div class="form-group">
+          <label for="newPassword1">Password</label>
+          <input type="password" class="form-control" name="newPassword" placeholder="Password" ng-model="register.password" required>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : (registrationForm.newPasswordVerify.$invalid || register.password !== register.password2) && !registrationForm.newPasswordVerify.$pristine, 'has-success' : !registrationForm.newPasswordVerify.$pristine && register.password === register.password2}">
+          <label for="newPasswordVerify">Verify Password</label>
+          <input type="password" class="form-control" name="newPasswordVerify" placeholder="Password" ng-model="register.password2"required>
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" placeholder="Enter First Name" ng-model="register.firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">LastName</label>
+          <input type="text" class="form-control" name="lastName" placeholder="Enter Last Name" ng-model="register.lastName" required>
+        </div>
+        
+        <button type="submit" class="btn btn-success" ng-click="register()" ng-disabled="registrationForm.$invalid">Register</button>
+        <small></br><a class="pull-right" ng-click="toggleRegistration($event)">Already registered? Login.</a></small>
+      </form>
+    </div>
+  </div>

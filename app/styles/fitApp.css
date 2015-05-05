@@ -1,0 +1,7 @@
+a {
+  cursor: pointer;
+}
+.activeLink {
+  color: #333333;
+  cursor: default;
+}

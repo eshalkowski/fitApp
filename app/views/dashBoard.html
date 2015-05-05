@@ -1,0 +1,26 @@
+<div class="row text-center">
+	<div class="col-xs-3">
+	<a ng-click="showWeek()" ng-class="{activeLink : selectedOption === 'week'}"> Week </a>
+	</div>
+	<div class="col-xs-3">
+	<a ng-click="showMonth()" ng-class="{activeLink : selectedOption === 'month'}">Month</a>
+	</div>
+	<div class="col-xs-3">
+	<a ng-click="showYear()" ng-class="{activeLink: selectedOption === 'year'}">Year</a>
+	</div>
+	<div class="col-xs-3">
+	<a ng-click="showAll()" ng-class="{activeLink : selectedOption === 'all'}"> All </a>
+	</div>
+</div>
+<div class="row">
+	<highchart id="stepsChart" config="stepsConfig"></highchart>
+<div>
+<h2>Recommendations</h2>
+<div class="row">
+	<div class="well">
+		<ul>
+			<li>Take more steps in the morning. Try to park further from work or take a stroll in the morning before starting. </li>
+			<li>It seems like activity decreases on the weekend, try to go for a walk or join a recreational sport.</li>
+		</ul>
+	</div>
+</div>
