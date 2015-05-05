@@ -1,6 +1,13 @@
 <div class="row text-center">
 <h4>Day View</h4>
 </div>
+<div class="btn-group chooseGraphBtns" role="group" aria-label="...">
+  <button type="button" ng-disabled="stepsConfig.options.chart.type === 'column'" class="btn btn-default" ng-click="setChartType('column')">Column</button>
+  <button type="button" ng-disabled="stepsConfig.options.chart.type === 'area'" class="btn btn-default" ng-click="setChartType('area')">Line</button>
+</div>
+<div class="row">
+	<highchart id="stepsChart" config="stepsConfig"></highchart>
+<div>
 <div class="row">
 	<div class="col-xs-5 col-xs-offset-2">
 		<div class="row">

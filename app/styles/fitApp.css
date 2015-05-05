@@ -5,3 +5,9 @@ a {
   color: #333333;
   cursor: default;
 }
+.chooseGraphBtns {
+  position: relative;
+  top: 50px;
+  left: 80px;
+  z-index: 1;
+}
