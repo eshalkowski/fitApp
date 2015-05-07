@@ -16,12 +16,13 @@ angular.module('fitApp')
 		$scope.showRegistration = !$scope.showRegistration;
     };
 
-    $scope.submitLogin = function(isValid){
-      AuthService.login({});
+    $scope.login = function(isValid){
+      console.log('Login');
+      AuthService.login($scope.login);
     };
 
     $scope.register = function(isValid){
       AuthService.register({});
     };
-    
+
   }]);

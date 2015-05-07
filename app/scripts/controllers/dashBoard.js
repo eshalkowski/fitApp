@@ -8,7 +8,14 @@
  * Controller of the fitAppApp
  */
 angular.module('fitApp')
-  .controller('DashBoardCtrl', function ($scope) {
+  .controller('DashBoardCtrl', function ($scope, AuthService) {
+  	AuthService.getUserDetails().then(
+  		function(data){
+  			console.log(data);
+  		},
+  		function(error){
+  			console.log(error);
+  		});
   	/**
   	* Possible values: week, month, year, all
   	*/

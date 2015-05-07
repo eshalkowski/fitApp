@@ -6,18 +6,20 @@ angular.module('fitApp').service('AuthService',[ '$http', '$q', function($http, 
             var deferred = $q.defer();
             var req = {
 				 method: 'POST',
-				 url: 'http://simplehelps.com/token',
+				 url: 'http://simplehelps.com/token/',
 				 headers: {
-				   'Content-Type': undefined,
-				   'j_username' : 'timmons@unc.edu',
-				   'j_password' : 'stripes88'
+				    'Content-Type': 'application/json'
 				 },
-				 data: { test: 'test' }
+				 data: { 
+				   "x_username" : params.email,
+				   "x_password" : params.password 
+				}
 			};
 			$http(req)
 			.success(function(data, status, headers, config){
 				//TODO: set token when recieved
 				console.log(data);
+				token = data.token;
 				deferred.resolve(data);
 			})
 			.error(function(data, status, headers, config){
@@ -26,7 +28,28 @@ angular.module('fitApp').service('AuthService',[ '$http', '$q', function($http, 
 
             return deferred.promise;
         };
-        this.login = function(params) {
+
+        this.getUserDetails = function(){
+        	console.log(token);
+        	var deferred = $q.defer();
+            var req = {
+				 method: 'GET',
+				 url: 'http://simplehelps.com/api/mydetails/',
+				 headers: {
+				   'x-auth-token': token
+				 }
+			};
+			$http(req)
+			.success(function(data, status, headers, config){
+				deferred.resolve(data);
+			})
+			.error(function(data, status, headers, config){
+				deferred.reject('An error occurred retrieving user details');
+			});
+
+            return deferred.promise;
+        }
+        this.register = function(params) {
             var deferred = $q.defer();
             var req = {
 				 method: 'POST',
@@ -51,4 +74,9 @@ angular.module('fitApp').service('AuthService',[ '$http', '$q', function($http, 
 
             return deferred.promise;
         };
+
+        this.getToken = function(){
+        	return token;
+        };
+
 }]);
